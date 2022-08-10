@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+"""
+include is used to include urls configured in another app on our django project
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('base.urls')),   
+    path('', include('base.urls')), 
+    path('', include('feed.urls')),    
 ]
