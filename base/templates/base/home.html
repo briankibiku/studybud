@@ -2,10 +2,16 @@
 <div>
   <h1>Home page</h1>
   {% if True %} Hello, Jin {% endif %}
+  <a href="{%url 'create-room'%}">Create Room</a>
   <div>
     {% for room in rooms %}
     <div>
+      <a href="{%url 'update-room' room.id %}">Edit</a>
+      <a href="{%url 'delete-room' room.id %}">Delete</a>
+      <span>@{{room.host.username}}</span>
       <h5>{{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a></h5>
+      <small>{{room.topic.name}}</small>
+      <hr />
     </div>
     {% endfor %}
   </div>
