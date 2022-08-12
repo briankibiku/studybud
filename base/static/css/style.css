@@ -13,8 +13,12 @@ li a {
 .success-alert{
     color: greenyellow;
     background-color: greenyellow;
-    height: 400px;
+    height: 30px;
     width: 100vw;
     padding: 10px;
     list-style: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
