@@ -15,3 +15,6 @@
 6. Create base app Add templates ```python3 manage.py startapp <app_name>```
 7. Connect app to our django project(studybud) 
 8. Configure routes in base urls file
+
+9. Navigation using <a< tag  
+```<a href="{%url 'create-room'%}">Create Room</a>```

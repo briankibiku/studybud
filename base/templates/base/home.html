@@ -1,19 +1,63 @@
-{% extends 'main.html'%} {% block content%}
-<div>
-  <h1>Home page</h1>
-  {% if True %} Hello, Jin {% endif %}
-  <a href="{%url 'create-room'%}">Create Room</a>
-  <div>
-    {% for room in rooms %}
-    <div>
-      <a href="{%url 'update-room' room.id %}">Edit</a>
-      <a href="{%url 'delete-room' room.id %}">Delete</a>
-      <span>@{{room.host.username}}</span>
-      <h5>{{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a></h5>
-      <small>{{room.topic.name}}</small>
-      <hr />
+{% extends 'main.html'%} {% block content%} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%if messages%}
+    <ul class="messages">
+      {%for message in messages%}
+      <li class="success-alert">{{message }}</li>
+      {%endfor%}
+    </ul>
+    {% endif %}
+
+    <div class="home-container">
+      <div>
+        <h3 class="big-font">Browse Topics</h3>
+        <div>
+          <a href="{%url 'home'%}">All</a>
+        </div>
+        <br />
+        {% for topic in topics %}
+        <div>
+          <a href="{%url 'home'%}?q={{topic.name}}">{{topic.name}}</a>
+        </div>
+        {%endfor%}
+        <hr />
+      </div>
+      <div>
+        <!-- <h1>Home page</h1>
+      {% if True %} Hello, Jin {% endif %} -->
+        <h5>{{room_count}} rooms available</h5>
+        <a href="{%url 'create-room'%}">Create Room</a>
+        <br />
+        <br />
+        <div>
+          {%if room_count == 0 %}
+          <div>
+            <p>Topic has no rooms yet</p>
+          </div>
+          {% endif %} {% for room in rooms %}
+          <div>
+            <a href="{%url 'update-room' room.id %}">Edit</a>
+            <a href="{%url 'delete-room' room.id %}">Delete</a>
+            <span>@{{room.host.username}}</span>
+            <h5>
+              {{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a>
+            </h5>
+            <small>Topic : {{room.topic.name}}</small>
+            <hr />
+          </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    {% endfor %}
-  </div>
-</div>
+  </body>
+</html>
 {% endblock %}

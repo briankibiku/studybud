@@ -1,0 +1,20 @@
+li a {
+    color: green;
+    font-size: x-large;
+}
+.big-font{
+    font-size: x-large;
+    color: brown;
+}
+.home-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.success-alert{
+    color: greenyellow;
+    background-color: greenyellow;
+    height: 400px;
+    width: 100vw;
+    padding: 10px;
+    list-style: none;
+}
