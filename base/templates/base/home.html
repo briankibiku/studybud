@@ -10,9 +10,9 @@
   </head>
   <body>
     {%if messages%}
-    <ul class="messages">
+    <ul class="success-alert">
       {%for message in messages%}
-      <li class="success-alert">{{message }}</li>
+      <li>{{message }}</li>
       {%endfor%}
     </ul>
     {% endif %}
@@ -45,8 +45,10 @@
           </div>
           {% endif %} {% for room in rooms %}
           <div>
+            {% if request.user == room.host%}
             <a href="{%url 'update-room' room.id %}">Edit</a>
             <a href="{%url 'delete-room' room.id %}">Delete</a>
+            {%endif%}
             <span>@{{room.host.username}}</span>
             <h5>
               {{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a>
